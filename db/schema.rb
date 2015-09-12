@@ -11,7 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150910160543) do
+ActiveRecord::Schema.define(version: 20150912215736) do
+
+  create_table "dives", force: :cascade do |t|
+    t.decimal  "depth",                 precision: 5, scale: 2, default: 0.0
+    t.integer  "duration",    limit: 2,                         default: 0
+    t.datetime "starttime"
+    t.decimal  "temperature",           precision: 3, scale: 1, default: 0.0
+    t.integer  "divenumber",                                    default: 0
+    t.string   "location",                                                    null: false
+    t.string   "country"
+    t.integer  "user_id",                                                     null: false
+    t.integer  "buddy_id"
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+  end
+
+  add_index "dives", ["country"], name: "index_dives_on_country"
+  add_index "dives", ["location"], name: "index_dives_on_location"
+  add_index "dives", ["user_id"], name: "index_dives_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"

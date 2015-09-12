@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  depth: 9.99
+  duration: 1
+  starttime: 2015-09-12 21:57:36
+  temperature: 9.99
+  divenumber: 1
+  location: MyString
+  country: MyString
+  user: 1
+  buddy: 1
+
+two:
+  depth: 9.99
+  duration: 1
+  starttime: 2015-09-12 21:57:36
+  temperature: 9.99
+  divenumber: 1
+  location: MyString
+  country: MyString
+  user: 1
+  buddy: 1

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+  has_many :dives,      class_name: "Dive", dependent: :destroy
   
   # Following
   has_many :active_relationships, class_name:  "Relationship",
