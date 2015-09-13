@@ -19,10 +19,11 @@ class Dive < ActiveRecord::Base
         if duration < 0
           errors.add(:duration, "should be positive")
         end
-        if starttime > Time.now.tomorrow
+        # TODO uncomment & fix
+        #if starttime > Time.now.tomorrow
             # Max 24 hours from now, because of time zones
-            errors.add(:starttime, "shouldn't be in the future")
-        end
+        #    errors.add(:starttime, "shouldn't be in the future")
+        #end
         if temperature > 50 || temperature < -20
             errors.add(:temperature, "should be between -20°C and 50°C")
         end

@@ -1,6 +1,6 @@
 <li id="dive-<%= dive.id %>">
-  <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
-  <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+  <%= link_to gravatar_for(dive.user, size: 50), dive.user %>
+  <span class="user"><%= link_to dive.user.name, dive.user %></span>
   
   <div class="content">
     <table>
@@ -14,7 +14,7 @@
           <td><%= dive.temperature %>°C</strong></td>
       </tr>
       <tr><td>Starttime</td>
-          <td><%= dive.starttime.strftime("%A, %d-%m-%Y, %H:%M")%></strong></td>
+          <td><%= dive.starttime.strftime("%A, %d-%m-%Y, %H:%M") unless !dive.starttime%></strong></td>
       </tr>
       <tr><td>Dive</td>
           <td>#<%= dive.divenumber %></strong></td>
@@ -32,7 +32,7 @@
   <span class="timestamp">
     Logged <%= time_ago_in_words(dive.created_at) %> ago.
     <% if current_user?(dive.user) %>
-      <%= link_to "delete", micropost, method: :delete,
+      <%= link_to "delete", dive, method: :delete,
                                        data: { confirm: "Delete dive?" } %>
       <% end %>
   </span>
