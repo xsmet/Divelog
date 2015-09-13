@@ -5,8 +5,9 @@ Steps to get started:
 ```bash
 * git clone divelog
 * cd divelog
-* bundle install
-* rake db:migrate
+* bundle install  # Install gems specified in Gemfile
+* rake db:migrate # Initialize database
+* rake emoji      # Initialize emoji images
 * rails server -b $IP -p $PORT, and test the server
 ```
 
