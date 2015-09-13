@@ -6,10 +6,13 @@ class DivesController < ApplicationController
     @dive = current_user.dives.build(dive_params)
     if @dive.save
         flash[:success] = "Dive logged!"
-        redirect_to root_url
     else
         flash[:danger] = "Invalid dive parameters!"
-        redirect_to request.referrer || root_url
+    end
+    respond_to do |format|
+      # TODO handle flash over Ajax
+      format.html { redirect_to request.referrer || root_url }
+      format.js   { }
     end
   end
   

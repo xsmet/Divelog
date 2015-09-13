@@ -1,0 +1,42 @@
+<%= form_for(@dive, html: { multipart: true }, remote: true) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <%= hidden_field_tag :id, @dive.id %>
+  
+  <div class="field">
+    <%= f.label :location %>
+    <%= f.text_field :location, placeholder: "Location", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :country %>
+    <%= f.text_field :country, placeholder: "Country", class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= f.label :depth %>
+    <%= f.number_field :depth, placeholder: "Depth in meters", 
+                                step: 0.1, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :duration %>
+    <%= f.number_field :duration, placeholder: "Duration in minutes", 
+                                          class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :temperature %>
+    <%= f.number_field :temperature, placeholder: "Temperature in °C", 
+                                step: 0.1, class: 'form-control' %>
+  </div>
+  
+  <div class="field">
+    <%= f.label :divenumber %>
+    <%= f.number_field :divenumber, placeholder: "Dive number", 
+                                          class: 'form-control' %>
+  </div>
+  
+  <%= f.submit "Log dive", class: "btn btn-primary" %>
+<% end %>
+
