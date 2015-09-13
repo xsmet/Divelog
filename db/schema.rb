@@ -21,14 +21,15 @@ ActiveRecord::Schema.define(version: 20150912215736) do
     t.integer  "divenumber",                                    default: 0
     t.string   "location",                                                    null: false
     t.string   "country"
-    t.integer  "user_id",                                                     null: false
     t.integer  "buddy_id"
+    t.integer  "user_id"
     t.datetime "created_at",                                                  null: false
     t.datetime "updated_at",                                                  null: false
   end
 
   add_index "dives", ["country"], name: "index_dives_on_country"
   add_index "dives", ["location"], name: "index_dives_on_location"
+  add_index "dives", ["user_id", "created_at"], name: "index_dives_on_user_id_and_created_at"
   add_index "dives", ["user_id"], name: "index_dives_on_user_id"
 
   create_table "microposts", force: :cascade do |t|

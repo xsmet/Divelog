@@ -5,13 +5,25 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-User.create!(name:  "Example User",
+User.create!(name:  "An Example User",
              email: "example@railstutorial.org",
              password:              "foobar",
              password_confirmation: "foobar",
              admin: true,
              activated: true,
              activated_at: Time.zone.now)
+
+User.create!(name:  "Xavier Smet",
+             email: "xaviersmet@gmail.com",
+             password:              "foobar",
+             password_confirmation: "foobar",
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
+
+user = User.find_by(name: "Xavier Smet")
+user.dives.create!(location: "Blue Corner", country: "Indonesia", duration: 47, depth: 18.7, temperature: 18)
+user.dives.create!(location: "Manta Point", country: "Indonesia", duration: 72, depth: 11.3, temperature: 24)
 
 99.times do |n|
   name  = Faker::Name.name
