@@ -1,4 +1,5 @@
 # Divelog
+`master`: [![Build Status](https://travis-ci.org/xsmet/Divelog.svg?branch=master)](https://travis-ci.org/xsmet/Divelog)
 
 Steps to get started:
 

@@ -8,10 +8,11 @@ class CreateDives < ActiveRecord::Migration
       t.integer   :divenumber,  default: 0, null: true                # optional 
       t.string    :location,    index: true, null: false              # required 
       t.string    :country,     index: true                           # optional
-      t.integer   :user_id,     index: true, null: false              # required foreign key (belongs to)
       t.integer   :buddy_id                                           # optional
-
+      t.references :user, index: true, foreign_key: true
+      
       t.timestamps null: false
     end
+    add_index :dives, [:user_id, :created_at]
   end
 end

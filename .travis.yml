@@ -1,0 +1,12 @@
+language: ruby
+
+# Not all gems are compatible with Ruby <=1.9.3
+# Builds have to pass with these versions:
+rvm:
+ - "2.1.1"
+ - "2.2.0"
+ - "2.2.1"
+
+
+# uncomment this line if your project needs to run something other than `rake`:
+# script: bundle exec rspec spec
