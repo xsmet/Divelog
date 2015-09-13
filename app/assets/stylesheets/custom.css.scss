@@ -11,7 +11,6 @@ $gray-medium-light: #eaeaea;
   box-sizing:         border-box;
 }
 
-
 /* universal */
 
 body {
@@ -258,6 +257,11 @@ input {
     img {
       display: block;
       padding: 5px 0;
+    }
+    .emoji {
+      padding: 0px;
+      display: inline;
+      vertical-align: middle;
     }
   }
   .timestamp {
