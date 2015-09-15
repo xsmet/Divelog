@@ -1,1 +1,1 @@
-alert('<%= flash[:success] %>');
+$('#flash').html("<%= j(render 'shared/flash') %>");
