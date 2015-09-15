@@ -20,7 +20,12 @@ class DivesController < ApplicationController
   def destroy
     @dive.destroy
     flash[:success] = "Dive deleted"
-    redirect_to request.referrer || root_url
+    redirect_to request.referrer || root_url unless request.xhr?
+    
+    respond_to do |format|
+      format.html
+      format.js
+    end
   end
 
   private

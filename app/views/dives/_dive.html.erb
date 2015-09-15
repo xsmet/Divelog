@@ -32,7 +32,7 @@
     Logged <%= time_ago_in_words(dive.created_at) %> ago.
     <% if current_user?(dive.user) %>
       <%= link_to "delete", dive, method: :delete,
-                                       data: { confirm: "Delete dive?" } %>
+                                       data: { confirm: "Delete dive?" }, remote: true %>
       <% end %>
   </span>
 </li>
