@@ -9,10 +9,11 @@ class DivesController < ApplicationController
     else
         flash[:danger] = "Invalid dive parameters!"
     end
+    redirect_to request.referrer || root_url unless request.xhr?
+    
     respond_to do |format|
-      # TODO handle flash over Ajax
-      format.html { redirect_to request.referrer || root_url }
-      format.js   { }
+      format.html
+      format.js
     end
   end
   
