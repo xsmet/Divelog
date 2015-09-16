@@ -1,3 +1,5 @@
 $('#flash').html("<%= j(render 'shared/flash') %>");
+
+// User followed (should always succeed)
 $("#follow_form").html("<%= escape_javascript(render('users/unfollow')) %>");
 $("#followers").html('<%= @user.followers.count %>');
