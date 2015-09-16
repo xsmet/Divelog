@@ -1,4 +1,9 @@
 $('#flash').html("<%= j(render 'shared/flash') %>");
 
 // Dive (possibly) logged
-// TODO update views (show new dive)
+
+// TODO only update if response.status == 200
+(function() {
+  var $post = $("<%= j render @dive %>")
+  $post.hide().prependTo($("ol.dives")).fadeIn()
+})()

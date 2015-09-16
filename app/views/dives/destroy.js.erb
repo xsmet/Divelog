@@ -1,4 +1,11 @@
 $('#flash').html("<%= j(render 'shared/flash') %>");
 
 // Dive deleted
-// TODO update views (remove dive)
+// DANGER - we ASSUME the post has been deleted on the server
+// even though the server might have returned a 500
+(function() {
+  var $dive = $("#dive-<%= @dive.id %>")
+  
+  $dive.fadeOut()
+  $dive.remove()
+})()

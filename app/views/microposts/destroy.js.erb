@@ -1,4 +1,11 @@
 $('#flash').html("<%= j(render 'shared/flash') %>");
 
-// Micropost deleted
-// TODO update views (remove micropost)
+// DANGER - we ASSUME the post has been deleted on the server
+// even though the server might have returned a 500
+(function() {
+  var $post = $("#micropost-<%= @micropost.id %>")
+  
+  // ol.microposts works on both the homepage (static/home) and users/show!
+  $post.fadeOut()
+  $post.remove()
+})()

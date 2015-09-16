@@ -1,3 +1,11 @@
 $('#flash').html("<%= j(render 'shared/flash') %>");
 
 // Micropost (possibly) created
+
+// TODO only update if response.status == 200
+(function() {
+  var $post = $("<%= j render @micropost %>")
+  
+  // ol.microposts works on both the homepage (static/home) and users/show!
+  $post.hide().prependTo($("ol.microposts")).fadeIn()
+})()
