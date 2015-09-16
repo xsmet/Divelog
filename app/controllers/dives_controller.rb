@@ -5,25 +5,22 @@ class DivesController < ApplicationController
   def create
     @dive = current_user.dives.build(dive_params)
     if @dive.save
-        flash.now[:success] = "Dive logged!"
+      flash_message(:success, "Dive logged!")
     else
-        flash.now[:danger] = "Invalid dive parameters!"
+      flash_message(:danger, "Invalid dive parameters!")
     end
-    redirect_to request.referrer || root_url unless request.xhr?
-    
+
     respond_to do |format|
-      format.html
+      format.html { redirect_to request.referrer || root_url }
       format.js
     end
   end
   
   def destroy
     @dive.destroy
-    flash.now[:success] = "Dive deleted"
-    redirect_to request.referrer || root_url unless request.xhr?
-    
+    flash_message(:success, "Dive deleted")
     respond_to do |format|
-      format.html
+      format.html { redirect_to request.referrer || root_url }
       format.js
     end
   end

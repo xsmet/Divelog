@@ -4,7 +4,7 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:followed_id])
     current_user.follow(@user)
-    flash.now[:success] = "You are now following #{@user.name}"
+    flash_message(:success, "You are now following #{@user.name}")
     respond_to do |format|
       format.html { redirect_to @user }
       format.js
@@ -14,7 +14,7 @@ class RelationshipsController < ApplicationController
   def destroy
     @user = Relationship.find(params[:id]).followed
     current_user.unfollow(@user)
-    flash.now[:success] = "You are no longer following #{@user.name}"
+    flash_message(:success, "You are no longer following #{@user.name}")
     respond_to do |format|
       format.html { redirect_to @user }
       format.js

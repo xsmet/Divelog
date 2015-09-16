@@ -31,8 +31,8 @@
   <span class="timestamp">
     Logged <%= time_ago_in_words(dive.created_at) %> ago.
     <% if current_user?(dive.user) %>
-      <%= link_to "delete", dive, method: :delete,
-                                       data: { confirm: "Delete dive?" }, remote: true %>
+      <%= link_to "delete", dive, method: :delete, remote: true,
+                                       data: { confirm: "Delete dive?" } %>
       <% end %>
   </span>
 </li>
