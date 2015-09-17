@@ -17,10 +17,10 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_select 'div.pagination'
     # Invalid submission
     assert_no_difference 'Micropost.count' do
-      post microposts_path, micropost: { content: "" }, xhr: false
+      # TODO should work with rendering form errors with XHR as well
+      # but for now we'll omit XHR
+      post microposts_path, micropost: { content: "" }
     end
-    # TODO should work with rendering form errors with XHR as well
-    # but for now we'll disable XHR
     assert_select 'div#error_explanation'
     # Valid submission
     content = "This micropost really ties the room together"
