@@ -16,4 +16,14 @@ class ApplicationController < ActionController::Base
       end
     end
     
+    # XHR (AJAX) needs a flash.now message, because otherwise
+    # the flash message would persist on the next normal page request
+    def flash_message(type, message)
+      if request.xhr?
+        flash.now[type] = message
+      else
+        flash[type] = message
+      end
+    end
+    
 end

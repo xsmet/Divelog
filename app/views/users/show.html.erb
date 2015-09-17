@@ -11,11 +11,19 @@
       <%= render 'shared/stats' %>
     </section>
   </aside>
-  
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
+    
+    <% if @user.dives.any? %>
+      <h3><%= "#{@user.name}'s dives (#{@user.dives.count})" %></h3>
+      <ol class="dives">
+        <%= render @dives %>
+      </ol>
+      
+    <% end %>
+    
     <% if @user.microposts.any? %>
-      <h3>Microposts (<%= @user.microposts.count %>)</h3>
+      <h3><%= "#{@user.name}'s microposts (#{@user.microposts.count})" %></h3>
       <ol class="microposts">
         <%= render @microposts %>
       </ol>

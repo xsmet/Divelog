@@ -1,0 +1,17 @@
+$('#flash').html("<%= j(render 'shared/flash') %>");
+
+<% if @dive.errors.any? %>
+
+(function() {
+  var $post = $("<%= j render('shared/error_messages', object: @dive) %>")
+  $post.hide().prependTo($("#new_dive")).fadeIn()
+})()
+
+<% else %>
+
+(function() {
+  var $post = $("<%= j render @dive %>")
+  $post.hide().prependTo($("ol.dives")).fadeIn()
+})()
+
+<% end %>

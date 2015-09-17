@@ -4,19 +4,33 @@ class MicropostsController < ApplicationController
   
   def create
     @micropost = current_user.microposts.build(micropost_params)
-    if @micropost.save
-      flash[:success] = "Micropost created!"
-      redirect_to root_url
-    else
-      @feed_items = []
-      render 'static_pages/home'
+
+    respond_to do |format|
+      if @micropost.save
+        flash_message(:success, "Micropost created!")
+        format.html { redirect_to request.referrer || root_url }
+        format.js
+      else
+        flash_message(:danger, "Could not save micropost")
+        format.html { 
+          # needed on static_pages/home, specified in StaticPagesController
+          @dive = current_user.dives.build
+          @feed_items = current_user.feed.paginate(page: params[:page])
+          render 'static_pages/home'
+        }
+        format.js
+      end
     end
   end
   
   def destroy
     @micropost.destroy
-    flash[:success] = "Micropost deleted"
-    redirect_to request.referrer || root_url
+    flash_message(:success, "Micropost deleted")
+    respond_to do |format|
+      format.html { redirect_to request.referrer || root_url }
+      format.js
+    end
+    
   end
   
   private

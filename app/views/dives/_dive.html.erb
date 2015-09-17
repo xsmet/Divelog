@@ -1,0 +1,38 @@
+<li id="dive-<%= dive.id %>">
+  <%= link_to gravatar_for(dive.user, size: 50), dive.user %>
+  <span class="user"><%= link_to dive.user.name, dive.user %></span>
+  
+  <div class="content">
+    <table>
+      <tr><td>Depth</td>
+          <td><strong><%= dive.depth %>m</strong></td>
+      </tr>
+      <tr><td>Duration</td>
+          <td><strong><%= dive.duration %>minutes</strong></td>
+      </tr>
+      <tr><td>Temperature</td>
+          <td><%= dive.temperature %>°C</strong></td>
+      </tr>
+      <tr><td>Starttime</td>
+          <td><%= dive.starttime.strftime("%A, %d-%m-%Y, %H:%M") unless !dive.starttime%></strong></td>
+      </tr>
+      <tr><td>Dive</td>
+          <td>#<%= dive.divenumber %></strong></td>
+      </tr>
+      <tr><td>Location</td>
+          <td><%= dive.location %></strong></td>
+      </tr>
+      <tr><td>Country</td>
+          <td><%= dive.country %></strong></td>
+      </tr>
+    </table>
+  </div>
+  
+  <span class="timestamp">
+    Logged <%= time_ago_in_words(dive.created_at) %> ago.
+    <% if current_user?(dive.user) %>
+      <%= link_to "delete", dive, method: :delete, remote: true,
+                                       data: { confirm: "Delete dive?" } %>
+      <% end %>
+  </span>
+</li>
