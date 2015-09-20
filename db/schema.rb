@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150912215736) do
+ActiveRecord::Schema.define(version: 20150920200213) do
 
   create_table "dives", force: :cascade do |t|
     t.decimal  "depth",                 precision: 5, scale: 2, default: 0.0
@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 20150912215736) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.string   "email_original"
+    t.date     "date_of_birth"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
