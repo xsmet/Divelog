@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(user_params) # Placeholder
+    @user.email_original = @user.email
     if @user.save
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account."
