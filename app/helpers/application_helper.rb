@@ -20,4 +20,14 @@ module ApplicationHelper
     end.html_safe if content.present?
   end
   
+  # Automatically convert URLs to HTML links, and make them open on a new page
+  # Remove protocol http:// or https:// from the link text
+  def render_links(content)
+    auto_link(content, :html => { :target => '_blank' }) do |text|
+      # .sub(...)  only replaces the visualized text
+      # .sub!(...) replaces the actual link AND the visualized text
+      text.sub(/^https?\:\/\//, '')
+    end
+  end
+  
 end
