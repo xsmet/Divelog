@@ -41,6 +41,7 @@ class UsersController < ApplicationController
   
   def update
     @user = User.find(params[:id])
+    @user.email_original = @user.email
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
